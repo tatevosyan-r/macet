@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     clean: true,
-    publicPath: './',
+    publicPath: '/macet/', // Добавляем имя репозитория
   },
 
   mode: 'production',
@@ -19,7 +19,12 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../' // Для корректных путей к шрифтам в CSS
+            }
+          },
           'css-loader'
         ],
       },
@@ -35,15 +40,6 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]'
-        }
-      },
-      // Добавляем правило для swiper файлов
-      {
-        test: /\.(js|css)$/i,
-        include: path.resolve(__dirname, 'src/swiper'),
-        type: 'asset/resource',
-        generator: {
-          filename: 'swiper/[name][ext]'
         }
       },
     ],
