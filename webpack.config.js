@@ -2,71 +2,109 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-  entry: {
-    main: './src/index.js'
-  },
-  
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
-    clean: true,
-    publicPath: './',
-  },
+module.exports = (env, argv) => {
+  const isProduction = argv.mode === 'production';
 
-  mode: 'production',
+  return {
+    entry: './src/index.js',
 
-  module: {
-    rules: [
-      // CSS файлы
-      {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ],
-      },
-      
-      // Шрифты
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'fonts/[name][ext]'
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
+      clean: true,
+    },
+
+    mode: isProduction ? 'production' : 'development',
+
+    devServer: {
+      static: './dist',
+      hot: true,
+      open: true,
+      port: 3001,
+    },
+
+    devtool: isProduction ? 'source-map' : 'eval-source-map',
+
+    module: {
+      rules: [
+        // Обработка CSS
+        {
+          test: /\.css$/i,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader'
+          ],
+        },
+
+        // Обработка шрифтов
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name][ext]'
+          }
+        },
+
+        // Обработка изображений
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'img/[name][ext]'
+          }
+        },
+
+        // Обработка SVG как отдельные файлы
+        {
+          test: /\.svg$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'icons/[name][ext]'
+          }
+        },
+
+        // Babel для современного JS
+        {
+          test: /\.js$/,
+          exclude: /node_modules|\.min\.js$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
         }
-      },
-      
-      // Изображения
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'images/[name][ext]'
-        }
-      },
-      
-      // Swiper JS
-      {
-        test: /swiper-bundle\.min\.js$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'swiper/[name][ext]'
-        }
-      },
+      ],
+    },
+
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+        filename: 'index.html',
+        minify: isProduction
+      }),
+
+      ...(isProduction ? [
+        new MiniCssExtractPlugin({
+          filename: 'css/[name].[contenthash].css',
+        })
+      ] : []),
     ],
-  },
 
-  plugins: [
-    // HTML
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
-      inject: true // Автоматически добавляет script и link теги
-    }),
-    
-    // CSS
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
-  ],
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
+
+    resolve: {
+      extensions: ['.js', '.css'],
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+        '@img': path.resolve(__dirname, 'src/img'),
+        '@fonts': path.resolve(__dirname, 'src/fonts'),
+        '@css': path.resolve(__dirname, 'src/css'),
+      },
+    },
+  };
 };
