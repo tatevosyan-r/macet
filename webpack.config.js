@@ -1,34 +1,33 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js'
+  },
   
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     clean: true,
-    publicPath: './', // Относительные пути
+    publicPath: './',
   },
 
   mode: 'production',
 
   module: {
     rules: [
+      // CSS файлы
       {
         test: /\.css$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../' // Для корректных путей к картинкам в CSS
-            }
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ],
       },
+      
+      // Шрифты
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
@@ -36,6 +35,8 @@ module.exports = {
           filename: 'fonts/[name][ext]'
         }
       },
+      
+      // Изображения
       {
         test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
         type: 'asset/resource',
@@ -43,7 +44,8 @@ module.exports = {
           filename: 'images/[name][ext]'
         }
       },
-      // Правило для swiper JS файлов
+      
+      // Swiper JS
       {
         test: /swiper-bundle\.min\.js$/,
         type: 'asset/resource',
@@ -55,23 +57,16 @@ module.exports = {
   },
 
   plugins: [
+    // HTML
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
+      inject: true // Автоматически добавляет script и link теги
     }),
     
+    // CSS
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-    }),
-
-    // Копируем swiper CSS
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: 'src/swiper/swiper-bundle.min.css',
-          to: 'swiper/[name][ext]'
-        }
-      ],
     }),
   ],
 };
