@@ -1,0 +1,1630 @@
+@import url(styleA.css);
+
+@font-face {
+    font-family: 'TTLakes';
+    src: url('../fonts/TTLakes-Regular.eot');
+    src: local('TTLakes Regular'), local('TTLakes-Regular'),
+        url('../fonts/TTLakes-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTLakes-Regular.woff') format('woff'),
+        url('../fonts/TTLakes-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTLakes';
+    src: url('../fonts/TTLakes-Medium.eot');
+    src: local('TTLakes Medium'), local('TTLakes-Medium'),
+        url('../fonts/TTLakes-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTLakes-Medium.woff') format('woff'),
+        url('../fonts/TTLakes-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTLakes';
+    src: url('../fonts/TTLakes-Bold.eot');
+    src: local('TTLakes Bold'), local('TTLakes-Bold'),
+        url('../fonts/TTLakes-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/TTLakes-Bold.woff') format('woff'),
+        url('../fonts/TTLakes-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* CSS переменные */
+:root {
+    --divider: #EAEAEA;
+    --accent: #41F6D7;
+    --hover: #27AE60;
+    --text-secondary: #666;
+    --header-bg: #ffffff;
+    --main-bg: rgb(248, 248, 248);
+    --text-nav: rgb(126, 126, 130);
+    --mine-text: rgb(27, 28, 33);
+    --swiper-theme-color: rgb(126, 126, 130);
+    --swiper-theme-color-active: rgb(126, 126, 130);
+    --swiper-pagination-color: rgb(126, 126, 130);
+}
+
+/* Базовые стили */
+HTML {
+
+    background-color: var(--main-bg);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    transition: overflow 0.3s ease;
+}
+
+.aside__burger-menu {
+    display: none;
+
+}
+
+
+.aside__burger-menu-on {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+
+    box-shadow: 16px 0px 52px 0px rgba(14, 24, 80, 0.2);
+    background: rgba(255, 255, 255, 1);
+    height: 100%;
+    width: 360px;
+    z-index: 999999;
+    top: 0;
+    padding: 25px;
+    padding-top: 0;
+}
+
+.form {
+    display: none;
+}
+
+.form--on {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    align-items: flex-start;
+    position: absolute;
+    padding-top: 25px;
+    box-shadow: 16px 0px 52px 0px rgba(14, 24, 80, 0.2);
+    background: rgba(255, 255, 255, 1);
+    height: 100%;
+    width: 360px;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    padding: 25px;
+
+}
+
+
+.call {
+    display: none;
+}
+
+.call--on {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    position: absolute;
+    padding-top: 25px;
+    box-shadow: 16px 0px 52px 0px rgba(14, 24, 80, 0.2);
+    background: rgba(255, 255, 255, 1);
+    height: 100%;
+    width: 360px;
+    z-index: 999999;
+    top: 0;
+    right: 0;
+    padding: 25px;
+
+}
+
+
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+
+
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 80%;
+}
+
+.form-title {
+    color: rgba(27, 28, 33, 1);
+
+    font-family: 'TTLakes';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.6px;
+    text-align: left;
+}
+
+.submit-btn {
+    align-self: flex-end;
+}
+
+.sloseBTN {
+    align-items: flex-start;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-family: 'TTLakes';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+.form-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 32px;
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid rgba(234, 234, 234, 1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 1);
+    font-family: 'TTLakes';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(181, 182, 188, 1);
+    font-family: 'TTLakes';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: rgba(181, 182, 188, 1);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form__text {
+    font-family: 'TTLakes';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #7E7E82;
+}
+
+
+.form__text_link {
+    font-family: 'TTLakes';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #FF3E79;
+}
+
+
+
+/* Шапка */
+.header {
+    height: 88px;
+    padding: 0;
+    background-color: var(--header-bg);
+    width: 100%;
+    min-width: 280px;
+    box-sizing: border-box;
+
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.header__logo {
+    width: 97px;
+    height: 51px;
+}
+
+.header__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px;
+    margin-bottom: 0;
+
+
+}
+
+.conteiner__q {
+
+    position: absolute;
+    z-index: 99999;
+
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.conteiner__w {
+
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.conteiner__e {
+
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    background: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+}
+
+.header__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header__divider {
+    width: 2px;
+    height: 32px;
+    background: var(--divider);
+}
+
+.header__nav-item--middle {
+    display: none;
+
+}
+
+.header__nav-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+}
+
+.header__nav-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header__nav-btn span {
+    display: none;
+}
+
+/* Основное меню */
+.srange-nav-wrapper--max {
+    display: none;
+}
+
+.header-menu__wrapper {
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+}
+
+.header-menu__wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.header-menu__wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to left, #fff, transparent);
+    pointer-events: none;
+}
+
+.header-menu__list {
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    list-style: none;
+    padding: 10px;
+    justify-content: space-around;
+
+}
+
+
+
+.header-menu__link {
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+    color: var(--text-nav);
+    font-family: TTLakes;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: left;
+
+}
+
+.header-menu__link:hover {
+    color: var(--hover);
+}
+
+.header-menu__list li:first-child .header-menu__link {
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    background-color: var(--header-bg);
+    padding: 8px 22px;
+}
+
+/* Основной контент */
+.main {
+    background-color: var(--main-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    font-size: 14px;
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.main__container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+
+}
+
+.main__title {
+    font-family: 'TTLakes';
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 0px;
+    padding-left: 14px;
+    position: relative;
+}
+
+.main__title--min {
+    font-family: 'TTLakes';
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--mine-text);
+    padding-left: 14px;
+    position: relative;
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+}
+
+.main__title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+}
+
+.main__title-min::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    border-left: 4px solid var(--accent);
+    border-radius: 5px;
+}
+
+.main__text,
+.main__text--secondary {
+    color: var(--mine-text);
+    font-family: 'TTLakes';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.main__text--secondary {
+    display: none;
+}
+
+
+.no__hidden {
+    display: block;
+    color: var(--mine-text);
+    font-family: 'TTLakes';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    text-align: left;
+}
+
+.main__readmore {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.next {
+    color: var(--mine-text);
+    font-family: 'TTLakes';
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: left;
+}
+
+.main__content {
+    display: flex;
+    gap: 36px;
+    flex-direction: column;
+    padding: 0 20px;
+}
+
+.main__image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+}
+
+/*БРЕНДЫ*/
+.brands--max {
+    display: none;
+
+}
+
+.brands--midl {
+    display: none;
+}
+
+.brands__list-wrapper {
+    position: relative;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.brands__list {
+
+    display: flex;
+    gap: 16px;
+}
+
+.brands__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 240px;
+    height: 72px;
+    padding: 0 25px;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+.brands__h2 {
+
+    height: 56px;
+    padding-left: 32px;
+    background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "TTLakes";
+    color: var(--text-nav);
+
+}
+
+
+/*СВАЙПЕР*/
+
+.brands--min {
+    overflow: hidden;
+    width: 100%;
+}
+
+.brandsSwiper {
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    box-sizing: border-box;
+    width: 240px;
+}
+
+
+
+.swiper-pagination-container {
+    position: absolute;
+    width: 100%;
+    max-width: 100vw;
+
+}
+
+.brands-section {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+}
+
+
+.brands-section__h2 {
+
+    color: rgba(126, 126, 130, 1);
+    font-family: TTLakes;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: left;
+    text-transform: uppercase;
+
+}
+
+/* Контейнер Swiper */
+.swiper {
+    width: 100%;
+    padding: 20px 25px 60px 25px;
+    /* Отступ снизу для пагинации */
+}
+
+
+
+
+
+/* Карточка бренда */
+.brands__card {
+    width: 240px;
+    height: 72px;
+
+
+
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    border: 1px solid rgba(234, 234, 234, 1);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.brands__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Логотип бренда */
+.brands__card img:first-child {
+    max-height: 32px;
+    max-width: 120px;
+    object-fit: contain;
+}
+
+/* Стрелка перехода */
+.brands__card img:last-child {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.brands__card:hover img:last-child {
+    opacity: 1;
+}
+
+/* Контейнер для пагинации */
+.swiper-pagination-container {
+    position: relative;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Точки пагинации */
+.swiper-pagination {
+
+    bottom: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.swiper-pagination-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    background-color: #DDDDDD;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    width: 12px !important;
+    height: 12px !important;
+    background-color: rgba(181, 182, 188, 1);
+    transform: scale(1.2);
+}
+
+
+
+
+/*Сервисы свайпер*/
+.services--min {
+    overflow: hidden;
+    width: 100%;
+}
+
+.servicesSwiper {
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.services--midl {
+    display: none;
+}
+
+.services--max {
+    display: none;
+
+}
+
+
+
+.services__h2 {
+    display: flex;
+    height: 56px;
+    padding-left: 32px;
+    background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "TTLakes";
+    color: var(--text-nav);
+}
+
+
+
+
+
+.services__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    width: 240px;
+    height: 160px;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+
+.services__card_h3 {
+    align-self: flex-start;
+    font-family: TTLakes;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.services__card_go {
+    align-self: flex-end;
+    width: 18%;
+}
+
+
+
+
+
+
+/*Цены свайпер*/
+
+.prices {
+    display: none;
+}
+
+.prices--min {
+
+
+    overflow: hidden;
+    width: 100%;
+}
+
+.swiper.pricesSwiper {
+    padding: 0;
+    padding-bottom: 60px;
+}
+
+.prices__conteiner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 25px;
+
+}
+
+.prices__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pricesSwiper {
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+
+
+.prices__h2--min {
+    padding-left: 25px;
+    display: flex;
+    height: 56px;
+
+    background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "TTLakes";
+    color: var(--text-nav);
+}
+
+.prices__h2 {
+    display: flex;
+    height: 56px;
+    padding-left: 25px;
+    background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "TTLakes";
+    color: var(--text-nav);
+}
+
+
+
+
+
+.prices__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    width: 260px;
+    height: 200px;
+    background: #FFFFFF;
+    border: 1px solid #EAEAEA;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+
+.prices_h6 {
+    text-align: left;
+
+
+    color: #7e7e82;
+    font-family: "TTLakes", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    opacity: 0.72;
+
+
+}
+
+
+.prices__text {
+
+
+    text-align: left;
+    color: rgba(27, 28, 33, 1);
+    font-family: "TTLakes", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+}
+
+.prices__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/*Цены текст*/
+
+
+
+.prices__footer_text {
+
+    color: rgba(27, 28, 33, 1);
+
+    font-family: TTLakes;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align: left;
+    width: 85%;
+
+}
+
+.offer {
+    width: 65%;
+}
+
+.offer__text {
+    color: rgba(27, 28, 33, 1);
+
+    font-family: TTLakes;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    text-align: left;
+}
+
+.offer__text::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    /* Ширина картинки */
+    height: 10px;
+    /* Высота картинки */
+    background-image: url('../img/strelka.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 10px;
+    /* Отступ от текста */
+    vertical-align: middle;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    text-align: center;
+    color: rgba(126, 126, 130, 1);
+
+    font-family: TTLakes;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+
+
+    padding: 0 25px;
+    padding-bottom: 25px;
+}
+
+.politic {
+    width: 214px;
+}
+
+
+
+@media (max-width: 768px) {
+    .brands__list-wrapper {
+        padding: 0 30px;
+    }
+
+
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+}
+
+
+
+/* Адаптив */
+@media (min-width: 768px) {
+    body {
+        margin-right: 16px;
+    }
+
+
+    .closeBTN {
+        position: relative;
+        right: 100px;
+    }
+
+    .form-container {
+        position: absolute;
+        top: 25px;
+    }
+
+    .form-title::before {
+        content: "";
+        position: absolute;
+        left: -25px;
+        height: 32px;
+        border-left: 4px solid var(--accent);
+        border-radius: 5px;
+    }
+
+    .header__nav-item--desktop {
+        display: none;
+
+    }
+
+    .main {
+        gap: 24px;
+    }
+
+    .header__nav-item--middle {
+        display: inline;
+    }
+
+    .header__container {
+        margin: 24px;
+        margin-bottom: 0;
+    }
+
+    .main__container {
+        flex-direction: row;
+        gap: 20px;
+        width: -webkit-fill-available;
+    }
+
+    .main__content {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+        gap: 14px;
+
+
+    }
+
+    .main__image-wrapper {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .main__text--secondary {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 14px;
+        position: relative;
+        overflow-y: auto;
+        scrollbar-width: none;
+        color: var(--mine-text);
+        font-weight: 400;
+    }
+
+
+    .main__text--secondary-show {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .brands--min {
+        display: none;
+    }
+
+    .brands--max {
+        display: none;
+    }
+
+    .brands--midl {
+        display: block;
+
+    }
+
+    /*Бренды*/
+    .main__readmore {
+
+        height: 24px;
+    }
+
+    .brands__wrapper {
+        padding: 25px;
+    }
+
+
+    .brands__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+    }
+
+    .brands__h2 {
+
+        display: flex;
+
+        flex-direction: row;
+        align-items: center;
+
+
+
+
+
+
+    }
+
+    .brands__container,
+    .brands__container--bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+
+        padding-bottom: 0;
+        margin: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .brands__container--bottom {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+
+        padding-top: 0;
+        row-gap: 16px;
+
+
+
+    }
+
+    .brands__item {
+        min-width: 240px;
+        min-height: 72px;
+    }
+
+    .brands__card {
+        width: 100%;
+    }
+
+
+    .brands__card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .brands__card img:first-child {
+        max-height: 40px;
+        max-width: 120px;
+        object-fit: contain;
+    }
+
+    /*СЕРВИСЫ*/
+    .services--min {
+        display: none;
+    }
+
+    .services--max {
+        display: none;
+    }
+
+    .services--midl {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .services__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+
+        column-gap: 35px;
+
+    }
+
+    .services__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+    }
+
+    .services__h2 {
+        display: flex;
+        height: 56px;
+        padding-left: 32px;
+        background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+        align-items: center;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: "TTLakes";
+        color: var(--text-nav);
+    }
+
+
+
+
+    .services__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        width: 100%;
+        height: 160px;
+        background: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+
+
+
+    .services__card_h3 {
+        align-self: flex-start;
+        font-family: TTLakes;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .services__card_go {
+        align-self: flex-end;
+        width: 18%;
+    }
+
+
+
+    /*ЦЕНЫ*/
+
+
+    .prices--min {
+        display: none;
+    }
+
+    .prices {
+        display: block;
+    }
+
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead th {
+        background-color: #f8f8f8;
+        text-align: left;
+        padding: 12px 8px;
+        border: none;
+        color: #7e7e82;
+        font-family: "TTLakes", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0px;
+        opacity: 0.72;
+    }
+
+    tbody td {
+        padding: 12px 8px;
+        border: none;
+        text-align: left;
+        color: #1b1c21;
+        font-family: "TTLakes", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0.2px;
+    }
+
+    tbody tr {
+        background-color: #ffffff;
+        border-radius: 6px;
+    }
+
+    tbody tr:not(:last-child) {
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    /* Создание скругленных углов для строк */
+    tbody tr:first-child td:first-child {
+        border-top-left-radius: 6px;
+    }
+
+    tbody tr:first-child td:last-child {
+        border-top-right-radius: 6px;
+    }
+
+    tbody tr:last-child td:first-child {
+        border-bottom-left-radius: 6px;
+    }
+
+    tbody tr:last-child td:last-child {
+        border-bottom-right-radius: 6px;
+    }
+
+    .prices__footer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+
+    footer {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .footer__l {
+        text-align: left;
+    }
+
+    .footer__r {
+        text-align: right;
+    }
+}
+
+@media (max-width: 1119px) {
+    .brands__item:nth-child(n+7) {
+        display: none;
+        opacity: 0;
+        transform: scale(0.95);
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        pointer-events: none;
+
+    }
+}
+
+
+@media (min-width: 1120px) {
+    .main__readmore{
+        display: none;
+    }
+    .header,
+    .main__title--min {
+        display: none;
+    }
+
+    .conteiner {
+        display: grid;
+        grid-template-columns: minmax(0, 320px) calc(100% - 320px);
+
+        height: 100vh;
+
+    }
+
+    #burgerOff {
+        display: none;
+    }
+
+    .aside__burger-menu {
+        display: block;
+        min-width: 320px;
+    }
+
+    .aside__burger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-footer);
+        width: var(--size-menu-width);
+        height: var(--size-menu-height);
+        z-index: 10;
+        background-color: var(--color-white);
+        width: 320px;
+        padding: 0 var(--gap-xlarge);
+
+    }
+
+    .main {
+
+        gap: 24px;
+    }
+
+    .main__content {
+        gap: 24px;
+        padding-left: 32px;
+    }
+
+    .main__container {
+        gap: 36px;
+    }
+
+    .srange-nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        padding: 0 16px;
+    }
+
+    .srange-nav-wrapper-list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .srange-nav-wrapper--max {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-right: 20px;
+
+    }
+
+    .srange-nav-wrapper--max span {
+        display: inline;
+        color: var(--mine-text);
+        margin-right: 8px;
+        font-family: 'TTLakes';
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: -0.2px;
+        text-align: right;
+    }
+
+
+
+
+    .main__text--secondary {
+        white-space: normal;
+        overflow: visible;
+    }
+
+    .header-menu__wrapper::after {
+        display: none;
+    }
+
+    /*БРЕНДЫ*/
+
+    .brands__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .brands--min {
+        display: none;
+    }
+
+    .brands--max {
+        display: block;
+
+    }
+
+    .brands--midl {
+        display: none;
+    }
+
+
+
+    .brands__h2 {
+
+        height: 56px;
+        padding-left: 32px;
+
+
+
+
+
+
+    }
+
+    .brands__container,
+    .brands__container--bottom--max {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        list-style: none;
+        row-gap: 16px;
+        column-gap: 35px;
+        margin: 0;
+        width: 100%;
+
+        box-sizing: border-box;
+
+
+    }
+
+
+    .brands__item {
+        min-width: 95%;
+        height: 95%;
+    }
+
+
+    .brands__card {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+
+        background: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        padding: 0 15px;
+    }
+
+
+
+    .brands__card img:first-child {
+        max-height: 35px;
+        max-width: 90px;
+        object-fit: contain;
+
+    }
+
+    .colum-4 {
+        display: inline;
+    }
+
+    .colum-non {
+        visibility: hidden;
+    }
+
+    /*РЕМОНТ РАЗЛИЧНЫХ ВИДОВ ТЕХНИКИ*/
+    .services__h2 {
+        display: flex;
+        height: 56px;
+        padding-left: 32px;
+        background: linear-gradient(270deg, #F8F8F8, #FFFFFF 100%);
+        align-items: center;
+        font-size: 16px;
+        font-weight: 400;
+        font-family: "TTLakes";
+        color: var(--text-nav);
+    }
+
+    .services--midl {
+        display: none;
+    }
+
+    .services--min {
+        display: none;
+    }
+
+    .services--max {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .services__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+
+        column-gap: 35px;
+
+    }
+
+    .services__item {
+        min-width: 95%;
+        height: 95%;
+    }
+
+    .services__card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        width: 100%;
+        height: 160px;
+        background: #FFFFFF;
+        border: 1px solid #EAEAEA;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+
+
+
+    .services__card_h3 {
+        align-self: flex-start;
+        font-family: TTLakes;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .services__card_go {
+        align-self: flex-end;
+        width: 18%;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .main__image {
+        border-radius: 0;
+    }
+
+
+}
