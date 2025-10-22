@@ -3,8 +3,10 @@ import './css/reset.css';
 import './css/styleA.css';
 import './css/style.css';
 
-// Импорт Swiper - Webpack скопирует их в папку swiper
+// Импорт Swiper CSS
 import './swiper/swiper-bundle.min.css';
+
+// Импорт Swiper JS
 import './swiper/swiper-bundle.min.js';
 
 // Импорт основного скрипта

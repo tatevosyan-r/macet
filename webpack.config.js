@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -9,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].js',
     clean: true,
-    publicPath: '/macet/', // Добавляем имя репозитория
+    publicPath: './', // Относительные пути
   },
 
   mode: 'production',
@@ -22,7 +23,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../' // Для корректных путей к шрифтам в CSS
+              publicPath: '../' // Для корректных путей к картинкам в CSS
             }
           },
           'css-loader'
@@ -42,6 +43,14 @@ module.exports = {
           filename: 'images/[name][ext]'
         }
       },
+      // Правило для swiper JS файлов
+      {
+        test: /swiper-bundle\.min\.js$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'swiper/[name][ext]'
+        }
+      },
     ],
   },
 
@@ -53,6 +62,16 @@ module.exports = {
     
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
+    }),
+
+    // Копируем swiper CSS
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/swiper/swiper-bundle.min.css',
+          to: 'swiper/[name][ext]'
+        }
+      ],
     }),
   ],
 };
