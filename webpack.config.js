@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -38,6 +37,15 @@ module.exports = {
           filename: 'images/[name][ext]'
         }
       },
+      // Добавляем правило для swiper файлов
+      {
+        test: /\.(js|css)$/i,
+        include: path.resolve(__dirname, 'src/swiper'),
+        type: 'asset/resource',
+        generator: {
+          filename: 'swiper/[name][ext]'
+        }
+      },
     ],
   },
 
@@ -49,26 +57,6 @@ module.exports = {
     
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
-    }),
-
-    new CopyWebpackPlugin({
-      patterns: [
-        { 
-          from: 'src/img', 
-          to: 'images',
-          noErrorOnMissing: true
-        },
-        { 
-          from: 'src/fonts', 
-          to: 'fonts',
-          noErrorOnMissing: true 
-        },
-        { 
-          from: 'src/swiper', 
-          to: 'swiper',
-          noErrorOnMissing: true 
-        },
-      ],
     }),
   ],
 };
