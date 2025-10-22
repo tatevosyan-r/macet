@@ -1,3 +1,5 @@
+import './public-path.js';
+
 // Импорт CSS файлов
 import './css/reset.css';
 import './css/styleA.css';
@@ -44,3 +46,12 @@ import './img/logoPartn/hp.svg';
 import './img/logoPartn/acer.svg';
 import './img/logoPartn/sony.svg';
 import './img/logoPartn/go.svg';
+
+
+// Динамический импорт всех изображений
+const imagesContext = require.context('./img', true, /\.(png|jpg|jpeg|gif|webp|svg)$/);
+imagesContext.keys().forEach(imagesContext);
+
+// Динамический импорт шрифтов
+const fontsContext = require.context('./fonts', true, /\.(woff|woff2|eot|ttf|otf)$/);
+fontsContext.keys().forEach(fontsContext);

@@ -6,7 +6,7 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   
   // Для GitHub Pages используем относительные пути
-  const isGitHubPages = process.env.NODE_ENV === 'gh-pages';
+  const isGitHubPages = process.env.NODE_ENV === 'gh-pages' || argv.mode === 'production';
 
   return {
     entry: './src/index.js',
