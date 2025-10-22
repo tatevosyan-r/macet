@@ -1,4 +1,4 @@
-import './public-path.js';
+
 
 // Импорт CSS файлов
 import './css/reset.css';
