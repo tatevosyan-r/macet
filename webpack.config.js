@@ -54,14 +54,7 @@ module.exports = (env, argv) => {
           }
         },
 
-        // Обработка SVG как отдельные файлы
-        {
-          test: /\.svg$/i,
-          type: 'asset/resource',
-          generator: {
-            filename: 'icons/[name][ext]'
-          }
-        },
+      
 
         // Babel для современного JS
         {
