@@ -96,7 +96,7 @@ module.exports = (env, argv) => {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@img': path.resolve(__dirname, 'src/img'),
-        '@fonts': path.resolve(__dirname, 'src/fonts'),
+        '@fonts': path.resolve(__dirname, 'fonts'),
         '@css': path.resolve(__dirname, 'src/css'),
       },
     },
