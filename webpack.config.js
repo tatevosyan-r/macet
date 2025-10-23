@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -12,6 +13,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, 'dist'),
       filename: isProduction ? 'js/[name].[contenthash].js' : 'js/[name].js',
       clean: true,
+      publicPath: './',
     },
 
     mode: isProduction ? 'production' : 'development',
@@ -45,28 +47,17 @@ module.exports = (env, argv) => {
           }
         },
 
-        // Обработка изображений
+        // Обработка изображений - все в корень img без вложенных папок
         {
           test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
           type: 'asset/resource',
           generator: {
-            filename: 'img/[name][ext]'
+            filename: 'img/[name][ext]'  // Все файлы прямо в img/
           }
         },
 
-      
-
-        // Babel для современного JS
-        {
-          test: /\.js$/,
-          exclude: /node_modules|\.min\.js$/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        }
+        
+       
       ],
     },
 
@@ -75,6 +66,16 @@ module.exports = (env, argv) => {
         template: './src/index.html',
         filename: 'index.html',
         minify: isProduction
+      }),
+
+      // Копируем Swiper CSS
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: 'src/swiper/swiper-bundle.min.css',
+            to: 'css/[name][ext]'
+          }
+        ],
       }),
 
       ...(isProduction ? [

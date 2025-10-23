@@ -1,3 +1,6 @@
+import Swiper from './swiper/swiper-bundle.min.js';
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.brandsSwiper', {
         slidesPerView: 'auto', // Автоматическое количество слайдов
