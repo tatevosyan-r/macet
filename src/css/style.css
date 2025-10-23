@@ -1362,9 +1362,23 @@ footer {
 
 
 @media (min-width: 1120px) {
-    .main__readmore{
+    .main__readmore {
         display: none;
     }
+
+
+    .main__readmore--max {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: none;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+    }
+
+
     .header,
     .main__title--min {
         display: none;
