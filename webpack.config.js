@@ -29,16 +29,18 @@ module.exports = (env, argv) => {
 
     module: {
       rules: [
-        // Обработка CSS
         {
           test: /\.css$/i,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+              options: {
+                publicPath: '../'
+              }
+            },
             'css-loader'
           ],
         },
-
-        // Обработка шрифтов
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           type: 'asset/resource',
@@ -46,18 +48,13 @@ module.exports = (env, argv) => {
             filename: 'fonts/[name][ext]'
           }
         },
-
-        // Обработка изображений - все в корень img без вложенных папок
         {
           test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
           type: 'asset/resource',
           generator: {
-            filename: 'img/[name][ext]'  // Все файлы прямо в img/
+            filename: 'img/[name][ext]'
           }
         },
-
-        
-       
       ],
     },
 
@@ -68,12 +65,16 @@ module.exports = (env, argv) => {
         minify: isProduction
       }),
 
-      // Копируем Swiper CSS
       new CopyWebpackPlugin({
         patterns: [
           {
             from: 'src/swiper/swiper-bundle.min.css',
             to: 'css/[name][ext]'
+          },
+          {
+            from: 'src/fonts',
+            to: 'fonts',
+            noErrorOnMissing: true
           }
         ],
       }),
@@ -96,7 +97,7 @@ module.exports = (env, argv) => {
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '@img': path.resolve(__dirname, 'src/img'),
-        '@fonts': path.resolve(__dirname, 'fonts'),
+        '@fonts': path.resolve(__dirname, 'src/fonts'),
         '@css': path.resolve(__dirname, 'src/css'),
       },
     },
