@@ -121,9 +121,7 @@ function setupBrandsToggleMax() {
     const hideAllButton = document.getElementById('hideAllButtonMax');
     const bottomContainer = document.querySelector('.brands__container--bottom--max');
 
-    // Добавляем CSS классы для управления видимостью
-    bottomContainer.classList.add('hidden');
-    hideAllButton.classList.add('hidden');
+   
 
     showAllButton.addEventListener('click', () => {
         bottomContainer.classList.remove('hidden');
