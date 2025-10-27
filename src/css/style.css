@@ -86,7 +86,7 @@ body {
     background: rgba(255, 255, 255, 1);
     height: 100%;
     width: 360px;
-    z-index: 999999;
+    z-index: 999997;
     top: 0;
     padding: 25px;
     padding-top: 0;
@@ -295,7 +295,7 @@ textarea.form-control {
 .conteiner__w {
 
     position: absolute;
-    z-index: 99999;
+    z-index: 999998;
     top: 0;
     background: rgba(255, 255, 255, 0.8);
     width: 100%;
@@ -305,7 +305,7 @@ textarea.form-control {
 .conteiner__e {
 
     position: absolute;
-    z-index: 99999;
+    z-index: 999998;
     top: 0;
     background: rgba(255, 255, 255, 0.8);
     width: 100%;

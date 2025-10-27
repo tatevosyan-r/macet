@@ -121,7 +121,7 @@ function setupBrandsToggleMax() {
     const hideAllButton = document.getElementById('hideAllButtonMax');
     const bottomContainer = document.querySelector('.brands__container--bottom--max');
 
-   
+
 
     showAllButton.addEventListener('click', () => {
         bottomContainer.classList.remove('hidden');
@@ -265,11 +265,30 @@ document.addEventListener('DOMContentLoaded', formShow);
 
 function formShowMax() {
     const formBTNmax = document.getElementById('formBTNmax')
+    const chatBTN = document.getElementById('chatBTN')
+    const chatBTN2 = document.getElementById('chatBTN2')
     const form = document.getElementById('form')
     const closeBTN = document.getElementById('closeBTN')
     const conteiner__w = document.getElementById('conteiner__w')
     const body = document.body;
 
+    chatBTN.addEventListener('click', () => {
+
+        form.classList.add('form--on');
+        conteiner__w.classList.remove('hidden')
+        conteiner__w.classList.add('conteiner__w')
+        body.classList.add('no-scroll');
+
+    });
+
+  chatBTN2.addEventListener('click', () => {
+
+        form.classList.add('form--on');
+        conteiner__w.classList.remove('hidden')
+        conteiner__w.classList.add('conteiner__w')
+        body.classList.add('no-scroll');
+
+    });
 
     formBTNmax.addEventListener('click', () => {
 
@@ -299,7 +318,7 @@ document.addEventListener('DOMContentLoaded', formShowMax);
 
 
 
-function callShow() {
+function callShowStatus() {
     const statusBTN = document.getElementById('statusBTN')
     const call = document.getElementById('call')
     const closeBTNcall = document.getElementById('closeBTNcall')
@@ -330,7 +349,7 @@ function callShow() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', callShow);
+document.addEventListener('DOMContentLoaded', callShowStatus);
 
 
 
@@ -368,3 +387,48 @@ function callShowMax() {
 }
 
 document.addEventListener('DOMContentLoaded', callShowMax);
+
+
+function callShowMin() {
+    const callBTN = document.getElementById('callBTN')
+    const callBTN2 = document.getElementById('callBTN2')
+    const call = document.getElementById('call')
+    const closeBTNcall = document.getElementById('closeBTNcall')
+    const conteiner__e = document.getElementById('conteiner__e')
+    const body = document.body;
+
+
+    callBTN.addEventListener('click', () => {
+
+        call.classList.add('call--on');
+        conteiner__e.classList.remove('hidden')
+        conteiner__e.classList.add('conteiner__e')
+        body.classList.add('no-scroll');
+
+    });
+
+    callBTN2.addEventListener('click', () => {
+
+        call.classList.add('call--on');
+        conteiner__e.classList.remove('hidden')
+        conteiner__e.classList.add('conteiner__e')
+        body.classList.add('no-scroll');
+
+    });
+    closeBTNcall.addEventListener('click', () => {
+
+        call.classList.remove('call--on');
+        body.classList.remove('no-scroll');
+        conteiner__e.classList.remove('conteiner__e')
+    });
+
+    conteiner__e.addEventListener('click', () => {
+
+        call.classList.remove('call--on');
+        conteiner__e.classList.remove('conteiner__e')
+        body.classList.remove('no-scroll');
+
+    });
+}
+
+document.addEventListener('DOMContentLoaded', callShowMin);
